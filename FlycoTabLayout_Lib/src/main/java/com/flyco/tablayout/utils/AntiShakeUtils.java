@@ -10,7 +10,7 @@ import android.view.View;
  */
 public class AntiShakeUtils {
 
-    private final static long INTERNAL_TIME = 300;
+    private final static long INTERNAL_TIME = 100;
 
     /**
      * Whether this click event is invalid.

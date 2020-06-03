@@ -94,6 +94,8 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     private int mTextUnselectColor;
     private int mTextBold;
     private boolean mTextAllCaps;
+    private boolean antiShake;
+    private int antiShakeInterval;
 
     private int mLastScrollX;
     private int mHeight;
@@ -148,6 +150,8 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         mIndicatorMarginBottom = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_bottom, dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorGravity = ta.getInt(R.styleable.SlidingTabLayout_tl_indicator_gravity, Gravity.BOTTOM);
         mIndicatorWidthEqualTitle = ta.getBoolean(R.styleable.SlidingTabLayout_tl_indicator_width_equal_title, false);
+        antiShake = ta.getBoolean(R.styleable.SlidingTabLayout_tl_antiShake, false);
+        antiShakeInterval = ta.getInteger(R.styleable.SlidingTabLayout_tl_antiShake_interval, 100);
 
         mUnderlineColor = ta.getColor(R.styleable.SlidingTabLayout_tl_underline_color, Color.parseColor("#ffffff"));
         mUnderlineHeight = ta.getDimension(R.styleable.SlidingTabLayout_tl_underline_height, dp2px(0));
@@ -262,7 +266,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(AntiShakeUtils.isInvalidClick(SlidingTabLayout.this))
+                if(antiShake && AntiShakeUtils.isInvalidClick(SlidingTabLayout.this, antiShakeInterval))
                     return;
                 int position = mTabsContainer.indexOfChild(v);
                 if (position != -1) {

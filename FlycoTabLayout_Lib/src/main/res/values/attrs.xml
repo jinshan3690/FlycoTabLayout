@@ -58,6 +58,9 @@
     <attr name="tl_tab_padding" format="dimension"/>
     <!-- 设置tab大小等分 -->
     <attr name="tl_tab_space_equal" format="boolean"/>
+    <!-- 设置tab防抖点击 -->
+    <attr name="tl_antiShake" format="boolean"/>
+    <attr name="tl_antiShake_interval" format="integer"/>
     <!-- 设置tab固定大小 -->
     <attr name="tl_tab_width" format="dimension"/>
 
@@ -91,6 +94,8 @@
         <attr name="tl_indicator_gravity"/>
         <attr name="tl_indicator_style"/>
         <attr name="tl_indicator_width_equal_title"/>
+        <attr name="tl_antiShake"/>
+        <attr name="tl_antiShake_interval"/>
 
         <!-- underline -->
         <attr name="tl_underline_color"/>

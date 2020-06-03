@@ -23,6 +23,7 @@
                 android:background="#666666"
                 android:paddingBottom="15dp"
                 android:paddingTop="15dp"
+                tl:tl_antiShake="true"
                 tl:tl_indicator_gravity="TOP"
                 tl:tl_textBold="SELECT"
                 tl:tl_textSelectSize="18sp"

@@ -282,18 +282,9 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
      * 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况
      */
     public void setViewPager2(ViewPager2 vp, String[] titles) {
-        if (vp == null || vp.getAdapter() == null) {
-            throw new IllegalStateException("ViewPager or ViewPager adapter can not be NULL !");
-        }
-
         if (titles == null || titles.length == 0) {
             throw new IllegalStateException("Titles can not be EMPTY !");
         }
-
-        if (titles.length != vp.getAdapter().getItemCount()) {
-            throw new IllegalStateException("Titles length must be the same as the page count !");
-        }
-
         this.mViewPager2 = vp;
         mTitles = new ArrayList<>();
         Collections.addAll(mTitles, titles);

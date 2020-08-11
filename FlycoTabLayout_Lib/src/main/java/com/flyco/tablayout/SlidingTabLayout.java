@@ -357,28 +357,30 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
                     return;
                 int position = mTabsContainer.indexOfChild(v);
                 if (position != -1) {
-                    if (mViewPager.getCurrentItem() != position) {
-                        if (mSnapOnTabClick) {
-                            if(mViewPager != null) {
+                    if (mViewPager != null) {
+                        if (mViewPager.getCurrentItem() != position) {
+                            if (mSnapOnTabClick) {
                                 mViewPager.setCurrentItem(position, false);
-                            }else{
-                                mViewPager2.setCurrentItem(position, false);
-                            }
-                        } else {
-                            if(mViewPager != null) {
-                                mViewPager.setCurrentItem(position);
-                            }else{
-                                mViewPager2.setCurrentItem(position);
-                            }
-                        }
 
-                        if (mListener != null) {
-                            mListener.onTabSelect(position);
+                            } else {
+                                mViewPager.setCurrentItem(position);
+                            }
                         }
                     } else {
-                        if (mListener != null) {
-                            mListener.onTabReselect(position);
+                        if (mSnapOnTabClick) {
+                            mViewPager2.setCurrentItem(position, false);
+
+                        } else {
+                            mViewPager2.setCurrentItem(position);
                         }
+                    }
+
+                    if (mListener != null) {
+                        mListener.onTabSelect(position);
+                    }
+                } else {
+                    if (mListener != null) {
+                        mListener.onTabReselect(position);
                     }
                 }
             }
